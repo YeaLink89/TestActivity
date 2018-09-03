@@ -10,25 +10,17 @@
 #import "WeixinActivity.h"
 
 @interface ViewController ()
-{
-    NSArray *activity;
-}
+@property (nonatomic, copy)NSArray *activities;
 
 @end
 
 @implementation ViewController
 
-- (void)actionShare
-{
-    UIImage *image = [UIImage imageNamed:@"Oauth.jpg"];
-    UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[@"这里是标题", image, [NSURL URLWithString:@"http://www.baidu.com"]] applicationActivities:activity];
-    activityView.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard, UIActivityTypePrint];
-    [self presentViewController:activityView animated:YES completion:nil];
-}
+#pragma mark - life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    activity = @[[[WeixinSessionActivity alloc] init], [[WeixinTimelineActivity alloc] init]];
+//    activity = @[[[WeixinSessionActivity alloc] init], [[WeixinTimelineActivity alloc] init]];
     UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareButton setFrame:CGRectMake(150, 300, 90, 48)];
     [shareButton setTitle:@"微信分享" forState:UIControlStateNormal];
@@ -43,5 +35,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - action
 
+- (void)actionShare
+{
+    UIImage *image = [UIImage imageNamed:@"Oauth.jpg"];
+    UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[@"这里是标题", image, [NSURL URLWithString:@"http://www.baidu.com"]] applicationActivities:self.activities];
+    activityView.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard, UIActivityTypePrint];
+    [self presentViewController:activityView animated:YES completion:nil];
+}
+
+#pragma mark - lazy load
+
+- (NSArray *)activities{
+    if (_activities) {
+        _activities = @[[[WeixinSessionActivity alloc] init], [[WeixinTimelineActivity alloc] init]];
+    }
+    return _activities;
+}
 @end

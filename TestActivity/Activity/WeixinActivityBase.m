@@ -9,6 +9,7 @@
 #import "WeixinActivityBase.h"
 
 @implementation WeixinActivityBase
+
 + (UIActivityCategory)activityCategory
 {
     return UIActivityCategoryShare;
@@ -26,6 +27,7 @@
             if ([activityItem isKindOfClass:[UIImage class]]) {
                 return YES;
             }
+            
             if ([activityItem isKindOfClass:[NSURL class]]) {
                 return YES;
             }
@@ -40,9 +42,11 @@
         if ([activityItem isKindOfClass:[UIImage class]]) {
             image = activityItem;
         }
+        
         if ([activityItem isKindOfClass:[NSURL class]]) {
             url = activityItem;
         }
+        
         if ([activityItem isKindOfClass:[NSString class]]) {
             title = activityItem;
         }
@@ -75,6 +79,7 @@
         req.message.title = title;
     }
     [self setThumbImage:req];
+    
     if (url) {
         WXWebpageObject *webObject = WXWebpageObject.object;
         webObject.webpageUrl = [url absoluteString];

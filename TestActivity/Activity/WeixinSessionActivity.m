@@ -9,6 +9,7 @@
 #import "WeixinSessionActivity.h"
 
 @implementation WeixinSessionActivity
+
 - (UIImage *)activityImage
 {
     return [[[UIDevice currentDevice] systemVersion] intValue] >= 8 ? [UIImage imageNamed:@"icon_session-8"] : [UIImage imageNamed:@"icon_session"];
