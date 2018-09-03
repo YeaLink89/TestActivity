@@ -556,7 +556,7 @@
 					"$(PROJECT_DIR)/TestActivity/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.changshuo.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TestActivity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -579,7 +579,7 @@
 					"$(PROJECT_DIR)/TestActivity/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.changshuo.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TestActivity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
